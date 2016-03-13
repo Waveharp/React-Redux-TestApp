@@ -1,12 +1,19 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: [
+    // include clientside webpack dev server library
+    // and webpack hot module reloader for HMR
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
     './src/index.js'
   ],
   module: {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: 'babel'
+      // use hot loader in addition to babel for .js and .jsx files
+      loader: 'react-hot!babel'
     }]
   },
   resolve: {
@@ -18,6 +25,12 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './dist'
-  }
+    contentBase: './dist',
+    // enable HMR
+    hot: true
+  },
+  plugins: [
+    // load HMR plugin
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };
