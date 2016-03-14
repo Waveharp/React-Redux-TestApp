@@ -5,6 +5,8 @@ import reducer from '../src/reducer';
 
 describe('reducer', () => {
 
+
+  // given set state action, merge its paylod into current state
   it('handles SET_STATE', () => {
     const initialState = Map();
     const action = {
