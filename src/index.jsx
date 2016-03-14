@@ -7,7 +7,7 @@ import reducer from './reducer';
 import App from './components/App';
 // return connected/smart version of Voting
 import {VotingContainer} from './components/Voting';
-import Results from './components/Results';
+import {ResultsContainer} from './components/Results';
 
 // set up the store
 // (TEMPORARY until we get real data) - dispatch SET_STATE action on it
@@ -25,7 +25,7 @@ store.dispatch({
 // point route to voting component
 // specify App as root route
 const routes = <Route component={App}>
-	<Route path="/results" component={Results} />
+	<Route path="/results" component={ResultsContainer} />
 	<Route path="/" component={VotingContainer} />
 </Route>;
 
